@@ -17,8 +17,8 @@ public class StudentRepo {
 		return student;
 	}
 	
-	public  Student getUser(int studentId) {
-		return em.find(Student.class, studentId);
+	public  Student getUser(String studentName) {
+		return em.find(Student.class, studentName);
 	}
 	
 }

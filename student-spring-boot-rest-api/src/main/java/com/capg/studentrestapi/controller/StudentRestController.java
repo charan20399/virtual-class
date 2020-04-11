@@ -30,11 +30,11 @@ public class StudentRestController {
 		return new ResponseEntity<List<Student>>(allStudents,HttpStatus.OK);
 	}
 	
-	@GetMapping("/students/id/{id}")
+	@GetMapping("/students/studentName/{studentName}")
 	
-	public ResponseEntity<Student> getStudentById(@PathVariable("id") int studentId) {
+	public ResponseEntity<Student> getStudentById(@PathVariable("studentName") String studentName) {
 		
-		Student student= service.getStudent(studentId);
+		Student student= service.getStudent(studentName);
 		
 		return new ResponseEntity<Student>(student,HttpStatus.OK);
 	}
@@ -55,8 +55,8 @@ public class StudentRestController {
 		
 	}
 
-	@DeleteMapping("/students/id/{id}")
-	public ResponseEntity<Student> deleteStudent(@PathVariable("id") int studentId) {
+	@DeleteMapping("/students/studentName/{studentName}")
+	public ResponseEntity<Student> deleteStudent(@PathVariable("studentName") String studentName) {
 		
 			return new ResponseEntity<Student>(HttpStatus.OK);
 		

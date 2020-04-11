@@ -19,24 +19,24 @@ public class StudentService {
 	public List<Student> getListOfStudents(){
       	return repo.findAll();
 	}
-	public Student getStudent(int studentId) {
-		if(!repo.existsById(studentId)) {
-			throw new StudentNotFoundException("student with id : ["+studentId+"] Not Found"); 
+	public Student getStudent(String studentName) {
+		if(!repo.existsById(studentName)) {
+			throw new StudentNotFoundException("student with id : ["+studentName+"] Not Found"); 
 		}
-		return repo.getOne(studentId);
+		return repo.getOne(studentName);
 	}
 	@Transactional
 	public Student addStudent(Student student) {
 		return repo.save(student);
 	}	
 	@Transactional
-	public boolean deleteStudent(int studentId) {
-		repo.deleteById(studentId);
-		return !repo.existsById(studentId);
+	public boolean deleteStudent(String studentName) {
+		repo.deleteById(studentName);
+		return !repo.existsById(studentName);
 	}
 	@Transactional
 	public Student updateStudent(Student newStudentData) {
-		Student student=repo.getOne(newStudentData.getStudentId());		
+		Student student=repo.getOne(newStudentData.getStudentName());		
 		student.setDob(newStudentData.getDob());
 		student.setStudentName(newStudentData.getStudentName());
 		repo.save(student);
